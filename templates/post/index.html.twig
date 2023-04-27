@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}
+
+
+    {% for post in posts %}
+
+        <div class="row">
+            <div class="container border border-dark">
+
+                <h3>{{ post.title }}</h3>
+                <p class="m-3 p-3">{{ post.content }}</p>
+                <p><strong>Written on : {{ post.createdAt|date("d/m/Y") }}</strong></p>
+                <a href="{{ path('show_post',{id:post.id}) }}" class="btn btn-primary">Read</a>
+            </div>
+
+
+        </div>
+
+    {% endfor %}
+
+
+
+
+
+
+{% endblock %}

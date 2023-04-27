@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}
+
+
+
+        <div class="row">
+            <div class="container border border-dark">
+
+                <h3>{{ post.title }}</h3>
+                <p class="m-3 p-3">{{ post.content }}</p>
+                <p><strong>Written on : {{ post.createdAt|date("d/m/Y") }}</strong></p>
+                <a href="{{ path('index_posts') }}" class="btn btn-secondary">back to posts</a>
+                <a href="{{ path('edit_post', {id:post.id}) }}" class="btn btn-warning">Edit</a>
+            </div>
+
+
+            <div class="container comments">
+                {% for comment in post.comments %}
+
+                <div class="row border-border-dark">
+                    <p><strong>{{ comment.content }}</strong></p>
+                    <p>Written on : {{ comment.createdAt|date("d/m/Y") }}</p>
+                </div>
+
+                {% endfor %}
+            </div>
+
+            <h3>Write a comment</h3>
+            {{ form_start(commentForm,{'action':path('create_comment',{id:post.id})}) }}
+            {{ form_row(commentForm.content) }}
+            <button type="submit" class="btn btn-success">post comment</button>
+            {{ form_end(commentForm) }}
+        </div>
+
+
+
+
+
+
+
+
+{% endblock %}

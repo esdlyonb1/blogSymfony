@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}creation{% endblock %}
+
+
+
+{% block body %}
+
+
+{% if edit %}
+    <h2>edit post</h2>
+
+{% else %}
+    <h2>write a post</h2>
+
+{% endif %}
+
+
+    {{ form_start(formPost) }}
+
+    {{ form_row(formPost.title) }}
+    {{ form_row(formPost.content) }}
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Post</button>
+    </div>
+
+
+    {{ form_end(formPost) }}
+
+
+
+
+
+{% endblock %}
