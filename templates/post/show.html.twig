@@ -10,10 +10,17 @@
             <div class="container border border-dark">
 
                 <h3>{{ post.title }}</h3>
+                <p>De : {{ post.author.username }}</p>
                 <p class="m-3 p-3">{{ post.content }}</p>
                 <p><strong>Written on : {{ post.createdAt|date("d/m/Y") }}</strong></p>
                 <a href="{{ path('index_posts') }}" class="btn btn-secondary">back to posts</a>
+
+                {% if app.user == post.author %}
+
                 <a href="{{ path('edit_post', {id:post.id}) }}" class="btn btn-warning">Edit</a>
+
+                {% endif %}
+
             </div>
 
 
