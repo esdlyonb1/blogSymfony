@@ -32,6 +32,11 @@ class Post
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Image $image = null;
+
+
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -119,4 +124,18 @@ class Post
 
         return $this;
     }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+
 }
